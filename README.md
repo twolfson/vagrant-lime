@@ -5,6 +5,7 @@
 This was created to isolate [lime's][lime] build process from my normal OS.
 
 [Vagrant]: http://www.vagrantup.com/
+[lime]: https://github.com/limetext/lime
 
 ![Screenshot of lime](docs/screenshot.png)
 
