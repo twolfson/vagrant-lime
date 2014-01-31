@@ -1,20 +1,40 @@
 # vagrant-lime
 
-Vagrantfile for limetext/lime
+[Vagrantfile][Vagrant] for [limetext/lime][lime]
+
+This was created to isolate [lime's][lime] build process from my normal OS.
+
+[Vagrant]: http://www.vagrantup.com/
+
+![Screenshot of lime](docs/screenshot.png)
 
 ## Getting Started
-Install the module with: `npm install vagrant-lime`
+Install [Vagrant][] as instructed by http://www.vagrantup.com/
 
-```javascript
-var vagrant_lime = require('vagrant-lime');
-vagrant_lime.awesome(); // "awesome"
+Clone the repository via `git`
+
+```bash
+git clone https://github.com/twolfson/vagrant-lime
 ```
 
-## Documentation
-_(Coming soon)_
+Launch the Vagrant instance
 
-## Examples
-_(Coming soon)_
+```bash
+vagrant up
+# Bringing machine 'default' up with 'virtualbox' provider...
+```
+
+When the instance is complete, you will be prompted to run the following commands
+
+```bash
+vagrant ssh
+cd /vagrant/code/go/src/lime/frontend/termbox
+./termbox
+```
+
+When the program launches, you should see an image similar to the screenshot at the top of this file.
+
+> At the time of writing, you must run `termbox` from within `vagrant`. There is no way to run `lime` on the host OS.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
