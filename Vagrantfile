@@ -39,7 +39,7 @@ SCRIPT
 
   # Clone and make the repo
   $build_lime = <<SCRIPT
-  if ! test -d /vagrant/code/go/src; then
+  if ! test -d /vagrant/code/go/src/lime/build; then
     export GOPATH=/vagrant/code/go
     mkdir -p $GOPATH/src
     cd $GOPATH/src
@@ -55,13 +55,11 @@ SCRIPT
 
   # Notify the user how to run `lime`
   $notify_user = <<SCRIPT
-  if ! which /vagrant/code/go/src &> /dev/null; then
-    echo "\\`lime\\` successfully constructed!"
-    echo "To run \\`lime\\`, run the following:"
-    echo "vagrant ssh"
-    echo "cd /vagrant/code/go/src/lime/frontend/termbox"
-    echo "./termbox"
-  fi
+  echo "\\`lime\\` successfully constructed!"
+  echo "To run \\`lime\\`, run the following:"
+  echo "vagrant ssh"
+  echo "cd /vagrant/code/go/src/lime/frontend/termbox"
+  echo "./termbox"
 SCRIPT
   config.vm.provision "shell", inline: $notify_user
 end
