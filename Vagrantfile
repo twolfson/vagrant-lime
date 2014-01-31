@@ -26,20 +26,20 @@ SCRIPT
 
   # Download go
   $download_go = <<SCRIPT
-  if ! test -d $HOME/code/go &> /dev/null; then
+  if ! test -d /home/vagrant/code/go &> /dev/null; then
     cd /tmp
     wget http://go.googlecode.com/files/go1.1.2.linux-amd64.tar.gz
     tar xvf go1.1.2.linux-amd64.tar.gz
-    mkdir $HOME/code
-    mv go $HOME/code/go
+    mkdir /home/vagrant/code
+    mv go /home/vagrant/code/go
   fi
 SCRIPT
   config.vm.provision "shell", inline: $download_go
 
   # Clone and make the repo
   $build_lime = <<SCRIPT
-  if ! test -d $HOME/code/go/src; then
-    export GOPATH=$HOME/code/go
+  if ! test -d /home/vagrant/code/go/src; then
+    export GOPATH=/home/vagrant/code/go
     mkdir -p $GOPATH/src
     cd $GOPATH/src
     git clone --recursive https://github.com/limetext/lime.git lime
@@ -53,11 +53,11 @@ SCRIPT
 
   # Notify the user how to run `lime`
   $notify_user = <<SCRIPT
-  if ! which $HOME/code/go/src &> /dev/null; then
+  if ! which /home/vagrant/code/go/src &> /dev/null; then
     echo "\\`lime\\` successfully constructed!"
     echo "To run \\`lime\\`, run the following:"
     echo "vagrant ssh"
-    echo "cd \\$HOME/code/go/src/lime/frontend/termbox"
+    echo "cd /home/vagrant/code/go/src/lime/frontend/termbox"
     echo "./termbox"
   fi
 SCRIPT
