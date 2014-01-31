@@ -63,5 +63,21 @@ SCRIPT
    # 37  ls
    # 38  wget http://go.googlecode.com/files/go1.1.2.linux-amd64.tar.gz
    # 39  history
-
+   # 40  tar xvf go1.1.2.linux-amd64.tar.gz
+   # 41  mv go $HOME/code/go
+   # 42  cd $HOME/code/go
+   # 43  ls
+   # 44  echo $GOPATH
+   # 45  mkdir -p $GOPATH/src
+   # 46  cd $GOPATH/src
+   # 47  git clone --recursive https://github.com/limetext/lime.git lime
+   # 48  cd $GOPATH/src/lime/build
+   # 49  cmake ..  # or use the cmake gui to create a build system suitable for you
+   # 50  make      # presuming you told cmake to generate makefiles
+   # 51  make test
+   # 52  make termbox
+   # 53  termbox
+   # 54  cd ../frontend/termbox/
+   # 55  ./termbox
+   # 56  history
 end
