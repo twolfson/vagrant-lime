@@ -38,7 +38,7 @@ SCRIPT
 
   # Clone and make the repo
   $build_lime = <<SCRIPT
-  if ! which $HOME/code/go/src &> /dev/null; then
+  if ! test -d $HOME/code/go/src; then
     export GOPATH=$HOME/code/go
     mkdir -p $GOPATH/src
     cd $GOPATH/src
@@ -57,7 +57,7 @@ SCRIPT
     echo "\\`lime\\` successfully constructed!"
     echo "To run \\`lime\\`, run the following:"
     echo "vagrant ssh"
-    echo "cd \\$HOME/src/lime/frontend/termbox"
+    echo "cd \\$HOME/code/go/src/lime/frontend/termbox"
     echo "./termbox"
   fi
 SCRIPT
