@@ -32,6 +32,7 @@ SCRIPT
     tar xvf go1.1.2.linux-amd64.tar.gz
     mkdir /home/vagrant/code
     mv go /home/vagrant/code/go
+    chown -R vagrant:vagrant /home/vagrant/code
   fi
 SCRIPT
   config.vm.provision "shell", inline: $download_go
@@ -47,6 +48,7 @@ SCRIPT
     cmake ..
     make
     make termbox
+    chown -R vagrant:vagrant /home/vagrant/code
   fi
 SCRIPT
   config.vm.provision "shell", inline: $build_lime
