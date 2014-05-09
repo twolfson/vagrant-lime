@@ -72,6 +72,10 @@ SCRIPT
     # Add dependencies
     cd $GOPATH/src/github.com/limetext/lime
     git submodule update --init
+
+    # Build the frontend
+    cd $GOPATH/src/github.com/limetext/lime/frontend/termbox
+    go build
   fi
 SCRIPT
   config.vm.provision "shell", inline: $install_lime
