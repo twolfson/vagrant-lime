@@ -32,18 +32,21 @@ SCRIPT
     cd /tmp
     wget https://storage.googleapis.com/golang/go1.2.2.linux-amd64.tar.gz
 
-    # Extract go
+    # Extract go and add to PATH
     sudo tar -C /usr/local -xzvf go1.2.2.linux-amd64.tar.gz
-    sudo echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
+    sudo bash -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
     source /etc/profile
   fi
 SCRIPT
   config.vm.provision "shell", inline: $install_go
 
-  # Clone and make the repo
+  # Install lime/termbox
   $build_lime = <<SCRIPT
-  if ! test -d /vagrant/code/go/src/lime/build; then
+  if ! test -d /vagrant/code/go; then
+    # Define GOPATH for packages
+    # http://golang.org/doc/code.html#GOPATH
     export GOPATH=/vagrant/code/go
+    mkdir $GOPATH
   fi
 SCRIPT
   config.vm.provision "shell", inline: $build_lime
