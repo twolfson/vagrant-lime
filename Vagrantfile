@@ -19,7 +19,8 @@ SCRIPT
   if ! which git &> /dev/null; then
     # mercurial is for one of the dependencies inside of make
     # build-essential contains `g++` which is for `cmake`
-    sudo apt-get install cmake make mercurial git build-essential -y
+    # pkgconfig is for `go get`
+    sudo apt-get install cmake make mercurial git build-essential pkgconfig -y
 
     # Install oniguruma
     # http://www.geocities.jp/kosako3/oniguruma/
@@ -29,11 +30,6 @@ SCRIPT
     ./configure
     make
     sudo make install
-
-    # Install patch for oniguruma + pkg-config
-    cd /usr/lib/pkgconfig
-    sudo wget https://raw.githubusercontent.com/limetext/rubex/master/oniguruma.pc
-    cd /tmp
 
     # Install python3.3
     # https://www.python.org/downloads/
