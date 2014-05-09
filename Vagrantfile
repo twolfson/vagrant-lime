@@ -57,9 +57,9 @@ SCRIPT
     # Define GOPATH for packages
     # http://golang.org/doc/code.html#GOPATH
     export GOPATH=/vagrant/code/go
-    mkdir $GOPATH
+    mkdir -p $GOPATH
 
-    # Download the termbox frontend
+    # Download the termbox frontend (installs to $GOPATH)
     go get github.com/limetext/lime/frontend/termbox
     # TODO: There was an error for python3.3 and oniguruma
     # vagrant@precise64:/tmp$ go get github.com/limetext/lime/frontend/termbox
