@@ -35,7 +35,7 @@ SCRIPT
 
     # Add patch for oniguruma
     cd /usr/lib/pkgconfig
-    sudo wget https://raw.githubusercontent.com/limetext/rubex/master/oniguruma.pc
+    sudo wget https://github.com/limetext/rubex/blob/ecf1f23794e3230cc857cf4dab44af3a2af04c46/oniguruma.pc
   fi
 SCRIPT
   config.vm.provision "shell", inline: $install_dependencies
