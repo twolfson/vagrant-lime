@@ -57,7 +57,7 @@ SCRIPT
   config.vm.provision "shell", inline: $install_go
 
   # Install limetext/lime
-  $build_lime = <<SCRIPT
+  $install_lime = <<SCRIPT
   if ! test -d /vagrant/code/go; then
     # Define GOPATH for packages
     # http://golang.org/doc/code.html#GOPATH
@@ -72,7 +72,7 @@ SCRIPT
     git submodule update --init
   fi
 SCRIPT
-  config.vm.provision "shell", inline: $build_lime
+  config.vm.provision "shell", inline: $install_lime
 
   # Notify the user how to run `lime`
   $notify_user = <<SCRIPT
