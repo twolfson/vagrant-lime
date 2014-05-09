@@ -30,11 +30,16 @@ SCRIPT
     make
     sudo make install
 
-    # Install python3
+    # TODO: Install patch for oniguruma + pkg-config
+    cd /usr/lib/pkgconfig
+    sudo wget https://raw.githubusercontent.com/limetext/rubex/master/oniguruma.pc
+    cd /tmp
+
+    # Install python3.3
     # https://www.python.org/downloads/
-    wget https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tgz
-    tar xvf Python-3.4.0.tgz
-    cd Python-3.4.0/
+    wget http://www.python.org/ftp/python/3.3.5/Python-3.3.5.tgz
+    tar xvf Python-3.3.5.tgz
+    cd Python-3.3.5/
     ./configure
     make
     sudo make install
