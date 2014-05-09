@@ -40,13 +40,26 @@ SCRIPT
 SCRIPT
   config.vm.provision "shell", inline: $install_go
 
-  # Install lime/termbox
+  # Install limetext/lime
   $build_lime = <<SCRIPT
   if ! test -d /vagrant/code/go; then
     # Define GOPATH for packages
     # http://golang.org/doc/code.html#GOPATH
     export GOPATH=/vagrant/code/go
     mkdir $GOPATH
+
+    # Download the termbox frontend
+    go get github.com/limetext/lime/frontend/termbox
+    # TODO: There was an error for python3.3 and oniguruma
+    # vagrant@precise64:/tmp$ go get github.com/limetext/lime/frontend/termbox
+    # # pkg-config --cflags python-3.3
+    # exec: "pkg-config": executable file not found in $PATH
+    # # pkg-config --cflags oniguruma
+    # exec: "pkg-config": executable file not found in $PATH
+
+    # Add dependencies
+    cd $GOPATH/src/github.com/limetext/lime
+    git submodule update --init
   fi
 SCRIPT
   config.vm.provision "shell", inline: $build_lime
