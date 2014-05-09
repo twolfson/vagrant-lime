@@ -85,7 +85,7 @@ SCRIPT
   echo "\\`lime\\` successfully constructed!"
   echo "To run \\`lime\\`, run the following:"
   echo "vagrant ssh"
-  echo "cd /vagrant/code/go/src/lime/frontend/termbox"
+  echo "cd /vagrant/code/go/src/github.com/limetext/lime/frontend/termbox"
   echo "./termbox"
 SCRIPT
   config.vm.provision "shell", inline: $notify_user
