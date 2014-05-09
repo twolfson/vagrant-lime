@@ -24,18 +24,21 @@ SCRIPT
 SCRIPT
   config.vm.provision "shell", inline: $install_git
 
-  # Download go
-  $download_go = <<SCRIPT
+  # Install go
+  $install_go = <<SCRIPT
   if ! test -d /vagrant/code/go &> /dev/null; then
+    # Download go
+    # https://code.google.com/p/go/wiki/Downloads?tm=2
     cd /tmp
-    wget http://go.googlecode.com/files/go1.1.2.linux-amd64.tar.gz
-    tar xvf go1.1.2.linux-amd64.tar.gz
-    mkdir /vagrant/code
-    mv go /vagrant/code/go
-    chown -R vagrant:vagrant /vagrant/code
+    wget https://storage.googleapis.com/golang/go1.2.2.linux-amd64.tar.gz
+
+    # Extract go
+    sudo tar -C /usr/local -xzvf go1.2.2.linux-amd64.tar.gz
+    sudo echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
+    source /etc/profile
   fi
 SCRIPT
-  config.vm.provision "shell", inline: $download_go
+  config.vm.provision "shell", inline: $install_go
 
   # Clone and make the repo
   $build_lime = <<SCRIPT
