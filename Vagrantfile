@@ -14,36 +14,23 @@ Vagrant.configure("2") do |config|
 SCRIPT
   config.vm.provision "shell", inline: $update_apt_get
 
+  # Add Python3.3
+  $install_python3 = <<SCRIPT
+  if ! which python3.3 &> /dev/null; then
+    # https://github.com/limetext/lime/blob/dbd2d9f6d0ea3f28b763b40c7d505d03570bd779/.travis.yml#L6-L8
+    sudo apt-get install python-software-properties -y
+    echo 'yes' | sudo add-apt-repository ppa:fkrull/deadsnakes
+    sudo apt-get update
+    sudo apt-get install python3.3 python3.3-dev -y
+  fi
+SCRIPT
   # Install dependencies
   $install_dependencies = <<SCRIPT
   if ! which git &> /dev/null; then
     # mercurial is for one of the dependencies inside of make
     # build-essential contains `g++` which is for `cmake`
-    # pkgconfig is for `go get`
-    sudo apt-get install cmake make mercurial git build-essential pkgconfig -y
-
-    # Install oniguruma
-    # http://www.geocities.jp/kosako3/oniguruma/
-    wget http://www.geocities.jp/kosako3/oniguruma/archive/onig-5.9.5.tar.gz
-    tar xvf onig-5.9.5.tar.gz
-    cd onig-5.9.5
-    ./configure
-    make
-    sudo make install
-
-    # Fix for unable to oniguruma path
-    # http://fnando.github.io/public/kitabu.html#syntax-highlighting
-    sudo bash -c "echo 'include /usr/local/lib' >> /etc/ld.so.conf"
-    sudo ldconfig
-
-    # Install python3.3
-    # https://www.python.org/downloads/
-    wget http://www.python.org/ftp/python/3.3.5/Python-3.3.5.tgz
-    tar xvf Python-3.3.5.tgz
-    cd Python-3.3.5/
-    ./configure
-    make
-    sudo make install
+    # libonig-dev is a dependency for `limetext/lime`
+    sudo apt-get install cmake make mercurial git build-essential libonig-dev -y
   fi
 SCRIPT
   config.vm.provision "shell", inline: $install_dependencies
