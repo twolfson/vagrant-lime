@@ -24,6 +24,8 @@ SCRIPT
     sudo apt-get install python3.3 python3.3-dev -y
   fi
 SCRIPT
+  config.vm.provision "shell", inline: $install_python3
+
   # Install dependencies
   $install_dependencies = <<SCRIPT
   if ! which git &> /dev/null; then
