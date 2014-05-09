@@ -41,14 +41,6 @@ SCRIPT
   $build_lime = <<SCRIPT
   if ! test -d /vagrant/code/go/src/lime/build; then
     export GOPATH=/vagrant/code/go
-    mkdir -p $GOPATH/src
-    cd $GOPATH/src
-    git clone --recursive https://github.com/limetext/lime.git lime
-    cd $GOPATH/src/lime/build
-    cmake ..
-    make
-    make termbox
-    chown -R vagrant:vagrant /vagrant/code
   fi
 SCRIPT
   config.vm.provision "shell", inline: $build_lime
