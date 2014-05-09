@@ -39,7 +39,7 @@ It will be Ctrl+Q to exit.
 
 > At the time of writing, you must run `termbox` from within `vagrant`. There is no way to run `lime` on the host OS.
 
-> Documentation/Vagrantfile created against https://github.com/limetext/lime/wiki/Building/487a525
+> Documentation/Vagrantfile created against https://github.com/limetext/lime/wiki/Building/61390a7
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
