@@ -15,14 +15,32 @@ SCRIPT
   config.vm.provision "shell", inline: $update_apt_get
 
   # Install dependencies
-  $install_git = <<SCRIPT
+  $install_dependencies = <<SCRIPT
   if ! which git &> /dev/null; then
     # mercurial is for one of the dependencies inside of make
     # build-essential contains `g++` which is for `cmake`
     sudo apt-get install cmake make mercurial git build-essential -y
+
+    # Install oniguruma
+    # http://www.geocities.jp/kosako3/oniguruma/
+    wget http://www.geocities.jp/kosako3/oniguruma/archive/onig-5.9.5.tar.gz
+    tar xvf onig-5.9.5.tar.gz
+    cd onig-5.9.5
+    ./configure
+    make
+    sudo make install
+
+    # Install python3
+    # https://www.python.org/downloads/
+    wget https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tgz
+    tar xvf Python-3.4.0.tgz
+    cd Python-3.4.0/
+    ./configure
+    make
+    sudo make install
   fi
 SCRIPT
-  config.vm.provision "shell", inline: $install_git
+  config.vm.provision "shell", inline: $install_dependencies
 
   # Install go
   $install_go = <<SCRIPT
