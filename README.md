@@ -35,6 +35,8 @@ cd /vagrant/code/go/src/lime/frontend/termbox
 
 When the program launches, you should see an image similar to the screenshot at the top of this file.
 
+It will be Ctrl+Q to exit.
+
 > At the time of writing, you must run `termbox` from within `vagrant`. There is no way to run `lime` on the host OS.
 
 > Documentation/Vagrantfile created against https://github.com/limetext/lime/wiki/Building/487a525
