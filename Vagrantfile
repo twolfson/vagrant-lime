@@ -30,7 +30,12 @@ SCRIPT
     # mercurial is for one of the dependencies inside of make
     # build-essential contains `g++` which is for `cmake`
     # libonig-dev is a dependency for `limetext/lime`
-    sudo apt-get install cmake make mercurial git build-essential libonig-dev -y
+    # pkg-config is a dependency for `go get`
+    sudo apt-get install cmake make mercurial git build-essential libonig-dev pkg-config -y
+
+    # Add patch for oniguruma
+    cd /usr/lib/pkgconfig
+    sudo wget https://raw.githubusercontent.com/limetext/rubex/master/oniguruma.pc
   fi
 SCRIPT
   config.vm.provision "shell", inline: $install_dependencies
