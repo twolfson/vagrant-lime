@@ -30,7 +30,7 @@ SCRIPT
     make
     sudo make install
 
-    # TODO: Install patch for oniguruma + pkg-config
+    # Install patch for oniguruma + pkg-config
     cd /usr/lib/pkgconfig
     sudo wget https://raw.githubusercontent.com/limetext/rubex/master/oniguruma.pc
     cd /tmp
