@@ -31,6 +31,11 @@ SCRIPT
     make
     sudo make install
 
+    # Fix for unable to oniguruma path
+    # http://fnando.github.io/public/kitabu.html#syntax-highlighting
+    sudo bash -c "echo 'include /usr/local/lib' >> /etc/ld.so.conf"
+    sudo ldconfig
+
     # Install python3.3
     # https://www.python.org/downloads/
     wget http://www.python.org/ftp/python/3.3.5/Python-3.3.5.tgz
