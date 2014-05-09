@@ -66,12 +66,6 @@ SCRIPT
 
     # Download the termbox frontend (installs to $GOPATH)
     go get github.com/limetext/lime/frontend/termbox
-    # TODO: There was an error for python3.3 and oniguruma
-    # vagrant@precise64:/tmp$ go get github.com/limetext/lime/frontend/termbox
-    # # pkg-config --cflags python-3.3
-    # exec: "pkg-config": executable file not found in $PATH
-    # # pkg-config --cflags oniguruma
-    # exec: "pkg-config": executable file not found in $PATH
 
     # Add dependencies
     cd $GOPATH/src/github.com/limetext/lime
