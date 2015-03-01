@@ -29,7 +29,7 @@ When the instance is complete, you will be prompted to run the following command
 
 ```bash
 vagrant ssh
-cd /vagrant/code/go/src/lime/frontend/termbox
+cd /vagrant/code/go/src/github/limetext/lime/frontend/termbox
 ./termbox
 ```
 
