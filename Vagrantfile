@@ -48,7 +48,7 @@ SCRIPT
     # Download go
     # https://code.google.com/p/go/wiki/Downloads?tm=2
     cd /tmp
-    wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz 
+    wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
 
     # Extract go and add to PATH
     sudo tar -C /usr/local -xzvf go1.4.2.linux-amd64.tar.gz
