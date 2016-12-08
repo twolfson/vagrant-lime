@@ -2,6 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  # Vagrant plugins
+  required_plugins = %w( vagrant-vbguest )
+  required_plugins.each do |plugin|
+      system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
+  end
+  
+  # Defining Vagrant box
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
